@@ -22,7 +22,7 @@ Bランクレベルアップセット
   
 Java入門編5: 2次元配列を理解しよう (全11回)  
 Javaでの2次元配列の基礎について学び、配列のループ処理について理解を深めます。  
-【「07:3次元配列で複数のドット絵を表示する」の演習問題_１】  
+【#07:3次元配列で複数のドット絵を表示する】演習問題_1  
 ```  
 public class Main {
     public static void main(String[] args) {
@@ -90,7 +90,7 @@ public class Main {
 @    @
  @@@@  
 ```
-【09:2次元配列で地図を表示する２】演習問題_1  
+【#09:2次元配列で地図を表示する２】演習問題_1  
 ```
 public class Main {
     public static void main(String[] args) {
@@ -121,14 +121,108 @@ public class Main {
 ..........
 +.+.+.+.+.
 ```
-Java入門編6: メソッドを理解しよう (全6回) 
+Java入門編6: メソッドを理解しよう (全6回)  
 Javaのメソッドについて、その呼び出し方や作り方など、基本機能を学習します。  
-  
+【＃03:引数と戻り値を追加しよう】演習問題（「九九の表を作成してみよう」）  
+```
+public class Main {
+    public static void main(String[] args) {
+        for (int num1 = 1; num1 <= 9; num1++) {   
+            for (int num2 = 1; num2 <= 9; num2++) {
+            //下段に記述されたメソッドを使用して出力。
+            System.out.print(multi(num1, num2));
+            //数値と数値の間のコンマの処理
+            if (num2 < 9) {
+                System.out.print(", ");
+            } else {
+               //*9で改行。
+                System.out.println("");
+            }
+        }
+    }
+}
+    public static int multi(int x, int y) {
+        //返り値の記述
+        return x * y;
+    }
+}
+```
+```
+//出力  
+1, 2, 3, 4, 5, 6, 7, 8, 9
+2, 4, 6, 8, 10, 12, 14, 16, 18
+3, 6, 9, 12, 15, 18, 21, 24, 27
+4, 8, 12, 16, 20, 24, 28, 32, 36
+5, 10, 15, 20, 25, 30, 35, 40, 45
+6, 12, 18, 24, 30, 36, 42, 48, 54
+7, 14, 21, 28, 35, 42, 49, 56, 63
+8, 16, 24, 32, 40, 48, 56, 64, 72
+9, 18, 27, 36, 45, 54, 63, 72, 81
+```  
+【＃05:RPGの攻撃シーンを作ろう】演習問題_1  
+```
+public class Main {
+    public static void main(String[] args) {
+        String[] team = {"勇者", "戦士", "魔法使い"};
+        //デフォルトの体力（300）を定義。これはインスタンスフィールド。
+        int enemy_hp = 300;
+        for (String person : team) {
+            // 敵の体力を減少させるコード。下段で定義されたattackメソッドを呼ぶ。引数は1行上のperson。  
+            enemy_hp = enemy_hp - attack(person);
+            System.out.println("敵のHPは残り" + enemy_hp + "です");
+        }
+    }
+   //クラスメソッドはstaticを付ける。これでMainクラスの中で全般的に利用できるようになる。
+     static を消すと、参照できないというエラーが出る。また、ここではメソッドだけが定義されている。
+     変数player の名称は何でも良い。
+   public static int attack(String player) {  
+        System.out.println(player + "はスライムを攻撃した");
+        int hit = (int) (Math.random() * 10 + 1) * 10;
+        System.out.println(hit + "のダメージを与えた");
+        return hit;ⅻ
+    }
+}
+```
+//出力(randomメソッドを用いているため、数値は実行の都度異なります)
+勇者はスライムを攻撃した
+30のダメージを与えた
+敵のHPは残り270です
+戦士はスライムを攻撃した
+50のダメージを与えた
+敵のHPは残り250です
+魔法使いはスライムを攻撃した
+20のダメージを与えた
+敵のHPは残り280です
+```
+
 Bランクレベルアップセット  
   
 Java入門編7: クラスを理解しよう (全8回)  <= 2月2日時点の学習位置  
 Javaのクラスの作り方や使い方など、クラスの基本的な機能について学習します。  
-  
+
+【＃02:クラスを作成しよう】演習問題
+```
+public class Main {
+    public static void main(String[] args) {
+        //下段で定義したクラスから新しいオブジェクトを生成。
+        Greeting greet = new Greeting();
+       //greet という名の変数をつくって、そこへ代入。
+        greet.sayHello();                                
+    }
+}
+class Greeting {
+    //sayHelloメソッドの定義。型の定義は不要。
+    public void sayHello() {                     
+        System.out.println("hello paiza");
+    }
+}
+```
+```
+//出力
+hello paiza
+```
+【#03:変数をクラスで管理しよう】演習問題_１ 
+
 Java入門編8:さらにクラスを理解しよう (全8回)  
 クラス継承やメソッドのオーバーライドなど、Javaのオブジェクト指向開発についてさらに学習します。  
   
