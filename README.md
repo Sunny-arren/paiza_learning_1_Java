@@ -17,6 +17,28 @@ Javaを使って、同じ手順を繰り返すループ処理の基本を学び�
   
 Java入門編4:配列の基礎 (全9回)  
 大規模なデータを扱うプログラムを作るときに必要になる配列について学びます。  
+【＃06:ArrayListクラスを使おう】演習問題_3&4
+```
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<String> weapon = new ArrayList<String>();
+        weapon.add("木の棒");
+        weapon.add("鉄の棒");
+        weapon.add("鉄の剣");
+        weapon.add("銅の剣");
+        weapon.remove(2);  //要素を加える場合は、set(index,"要素名")
+        for (String item : weapon) {
+            System.out.println(item.size());
+        }
+    }
+}
+```
+```
+出力//
+3
+```
   
 Bランクレベルアップセット  
   
@@ -223,6 +245,26 @@ class Greeting {
 hello paiza
 ```
 【#03:変数をクラスで管理しよう】演習問題_１ 
+```
+public class Main {
+    public static void main(String[] args) {
+        //Greetingクラスから新しいインスタンス（"paiza"）を生成。
+        Greeting greet = new Greeting("paiza");
+        greet.sayHello();
+    }
+}
+
+class Greeting {
+    private String myName;　//myNameという変数を作る。parivateにすることで、クラスがインスタンス化されることを防ぐ（こん目的は調査中）。
+　　//以下でこの変数を初期化 = コンストラクタ　
+    public Greeting(String n) {
+        myName = n;
+    }
+    public void sayHello() {
+        System.out.println("hello " + myName);
+    }
+}
+```
 
 Java入門編8:さらにクラスを理解しよう (全8回)  
 クラス継承やメソッドのオーバーライドなど、Javaのオブジェクト指向開発についてさらに学習します。  
