@@ -255,7 +255,7 @@ public class Main {
 }
 
 class Greeting {
-    private String myName;　//myNameという変数を作る。parivateにすることで、クラスがインスタンス化されることを防ぐ（こん目的は調査中）。
+    private String myName;　//myNameという変数を作る。parivateにすることで、クラスがインスタンス化されることを防ぐ（※）。
 　　//以下でこの変数を初期化 = コンストラクタ　
     public Greeting(String n) {
         myName = n;
@@ -265,7 +265,6 @@ class Greeting {
     }
 }
 ```
-
 Java入門編8:さらにクラスを理解しよう (全8回)  
 クラス継承やメソッドのオーバーライドなど、Javaのオブジェクト指向開発についてさらに学習します。  
   
