@@ -220,14 +220,14 @@ public class Main {
 
 Bランクレベルアップセット  
   
-Java入門編7: クラスを理解しよう (全8回)  <= 2月2日時点の学習位置  
+Java入門編7: クラスを理解しよう (全8回)  
 Javaのクラスの作り方や使い方など、クラスの基本的な機能について学習します。  
 
 【＃02:クラスを作成しよう】演習問題
 ```
 public class Main {
     public static void main(String[] args) {
-        //下段で定義したクラスから新しいオブジェクトを生成。
+        //下段で定義したクラスから新しいインスタンスを生成（＝メモリ領域の確保。メモリの番地がgreetへ代入される）。
         Greeting greet = new Greeting();
        //greet という名の変数をつくって、そこへ代入。
         greet.sayHello();                                
@@ -248,15 +248,16 @@ hello paiza
 ```
 public class Main {
     public static void main(String[] args) {
-        //Greetingクラスから新しいインスタンス（"paiza"）を生成。
+        //Greetingクラスから新しいインスタンスを生成。
+        コンストラクタに渡すべき引数（ここでは"paiza"）を、new する時に渡しておく。
         Greeting greet = new Greeting("paiza");
         greet.sayHello();
     }
 }
 
 class Greeting {
-    private String myName;　//myNameという変数を作る。parivateにすることで、クラスがインスタンス化されることを防ぐ（※）。
-　　//以下でこの変数を初期化 = コンストラクタ　
+    private String myName;  //myNameという変数を宣言。privateにすることで、クラスがインスタンス化されることを防ぐ。
+    //以下でこの変数を初期化(= コンストラクタ。「Greeting」はクラス名と同一)。引数をnとすることで、様々な名称を入れることが可能。
     public Greeting(String n) {
         myName = n;
     }
@@ -265,13 +266,41 @@ class Greeting {
     }
 }
 ```
+```
+//出力
+hello paiza
+```
 Java入門編8:さらにクラスを理解しよう (全8回)  
 クラス継承やメソッドのオーバーライドなど、Javaのオブジェクト指向開発についてさらに学習します。  
   
 Java入門編9: HashMap(連想配列)の基礎 (全6回)  
 JavaでのHashMap(連想配列)の基礎について学び、RPGのアイテム一覧を作る事を目指します。  
   
-Java入門編10:例外処理を理解しよう (全13回)  
+Java入門編10:例外処理を理解しよう (全13回) <= 2月25日現在の学習位置  
 実行時に発生したエラーに対応する、Javaの例外処理について学習します。  
-  
+【#05:複数の例外を捕捉してみよう】演習問題_1  
+```
+public class Main {
+    public static void main(String[] args) {
+        String[] enemies = {"スライム", "ドラゴン", "魔王" };
+        try {
+            int number = 3;
+            System.out.println("勇者は敵に遭遇した");
+            System.out.println("勇者は" + enemies[number] + "と戦った");
+        } catch (NumberFormatException e) {
+            System.err.println("文字列を数値に変換できません。"); //補足されるエラーが異なるので出力されない。
+        } catch (Exception e){
+            System.err.println("その敵は表示できません");
+        } finally {
+            System.out.println("勇者は勝利した");
+        }
+    }
+}
+
+//出力
+勇者は敵に遭遇した
+勇者は勝利した
+//実行時エラー出力
+その敵は表示できません  
+```
 以上です。  
